@@ -5,6 +5,7 @@ public class Customer {
     private String firstName;
     private String lastName;
     private String email;
+    private Address address;
     private String user_Id;
 
     public Customer() {
@@ -15,6 +16,7 @@ public class Customer {
         this.lastName = builder.lastName;
         this.email = builder.email;
         this.user_Id = builder.user_Id;
+        this.address = builder.address;
     }
 
     public String getCustomer_Id() {
@@ -37,22 +39,29 @@ public class Customer {
         return user_Id;
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
-                "customerId='" + customer_Id + '\'' +
+                 ", customer_Id='" + customer_Id + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", user_Id='" + user_Id + '\'' +
+                ", address=" + address +
                 '}';
     }
+
     public static class  Builder {
         private String customer_Id;
         private String firstName;
         private String lastName;
         private String email;
         private String user_Id;
+        private Address address;
 
         public Builder setcustomer_Id(String customer_Id) {
             this.customer_Id = customer_Id;
@@ -74,12 +83,17 @@ public class Customer {
             this.user_Id = user_Id;
             return this;
         }
+        public Builder setaddress(Address address) {
+            this.address = address;
+            return this;
+        }
         public Builder copy(Customer customer) {
             this.customer_Id = customer.getCustomer_Id();
             this.firstName = customer.getFirstName();
             this.lastName = customer.getLastName();
             this.email = customer.getEmail();
             this.user_Id = customer.getUser_Id();
+            this.address = customer.getAddress();
             return this;
         }
         public Customer build() {

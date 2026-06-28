@@ -12,6 +12,7 @@ class UserFactoryTest {
                 .setemail("sethu@gmail.com")
                 .setrole(Role.ADMIN)
                 .build();
+
         System.out.println(user1);
     }
 }

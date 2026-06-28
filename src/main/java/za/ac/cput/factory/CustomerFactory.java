@@ -5,7 +5,7 @@ import za.ac.cput.util.Helper;
 
 public class CustomerFactory {
 
-    public static Customer createCustomer(String customer_id,String firstName,String lastName,String email,String user_Id) {
+    public static Customer createCustomer(String customer_id,String firstName,String lastName,String email,String user_Id, Address address) {
         if (Helper.isNullOrEmpty(customer_id)||Helper.isNullOrEmpty(firstName)||Helper.isNullOrEmpty(lastName) || Helper.isNullOrEmpty(email) || Helper.isNullOrEmpty(user_Id)) {
             throw new NullPointerException("customer_id or firstName or lastName or email or user_Id");
         }
@@ -18,6 +18,7 @@ public class CustomerFactory {
                 .setlastName(lastName)
                 .setemail(email)
                 .setuser_Id(user_Id)
+                .setaddress(address)
                 .build();
     }
 }
