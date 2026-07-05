@@ -63,7 +63,7 @@ public class PaymentRepository implements IPaymentRepository {
     }
 
     @Override
-    public boolean delee(String paymentID) {
+    public boolean delete(String paymentID) {
         Payment paymentToDelete = read(paymentID);
         if (paymentToDelete == null) {
             return false;
