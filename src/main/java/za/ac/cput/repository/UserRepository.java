@@ -57,7 +57,7 @@ public class UserRepository implements IUser{
     }
 
     @Override
-    public boolean delee(String user_id) {
+    public boolean delete(String user_id) {
         User userToDelete = read(user_id);
         if(userToDelete == null){
             return false;
