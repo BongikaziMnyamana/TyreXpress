@@ -1,7 +1,6 @@
 /* PaymentFactoryTest.java
    Payment Factory Test class
-   Author: Bongikazi Mnyamana (222718404)
-   Date: 28 June 2026 */
+   Author: Bongikazi Mnyamana (222718404)*/
 
 package za.ac.cput.factory;
 
