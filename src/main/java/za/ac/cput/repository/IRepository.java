@@ -8,6 +8,7 @@ public interface IRepository <T,ID>{
     T update(T t);
     boolean delete(ID t);
 
+
     List<T> getAll();
 
 
