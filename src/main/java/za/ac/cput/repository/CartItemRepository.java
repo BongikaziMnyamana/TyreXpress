@@ -50,13 +50,14 @@ public class CartItemRepository implements IRepository<CartItem, String> {
     }
 
     @Override
-    public boolean delee(String cartItemId) {
+    public boolean delete(String cartItemId) {
         CartItem itemToDelete = read(cartItemId);
         if (itemToDelete == null) {
             return false;
         }
         return cartItemDB.remove(itemToDelete);
     }
+
 
     @Override
     public List<CartItem> getAll() {

@@ -50,7 +50,7 @@ public class CartRepository implements IRepository<Cart, String> {
     }
 
     @Override
-    public boolean delee(String cartId) {
+    public boolean delete(String cartId) {
         Cart cartToDelete = read(cartId);
         if (cartToDelete == null) {
             return false;

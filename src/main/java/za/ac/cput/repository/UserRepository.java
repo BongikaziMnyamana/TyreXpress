@@ -1,9 +1,8 @@
 package za.ac.cput.repository;
 
 import za.ac.cput.domain.User;
+import java.util.*;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserRepository implements IUser{
 
