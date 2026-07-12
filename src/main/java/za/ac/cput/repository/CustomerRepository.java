@@ -48,6 +48,6 @@ public class CustomerRepository implements ICustomer{
 
     @Override
     public List<Customer> getAll() {
-        return List.of();
+        return customerList;
     }
 }

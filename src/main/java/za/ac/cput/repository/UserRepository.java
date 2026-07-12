@@ -67,7 +67,7 @@ public class UserRepository implements IUser{
 
     @Override
     public List<User> getAll() {
-        return List.of();
+        return userList;
     }
 
 }

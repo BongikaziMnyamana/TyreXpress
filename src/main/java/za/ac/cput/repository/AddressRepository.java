@@ -64,6 +64,6 @@ public class AddressRepository implements IAddress {
 
     @Override
     public List<Address> getAll() {
-        return List.of();
+        return addressList;
     }
 }
