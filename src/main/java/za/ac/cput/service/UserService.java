@@ -44,7 +44,6 @@ public class UserService implements IUserService {
     }
 
     public User login(String email, String password) {
-
         User user = repository.findByEmail(email)
                 .orElse(null);
 

@@ -34,6 +34,7 @@ public class Order {
         this.customerId = builder.customerId;
         this.addressId = builder.addressId;
         this.paymentId = builder.paymentId;
+        this.orderLines = builder.orderLines;
     }
 
     public Long getOrderId() {
@@ -90,6 +91,7 @@ public class Order {
         private String customerId;
         private String addressId;
         private String paymentId;
+        private List<OrderLine> orderLines;
 
         public Builder setOrderId(Long orderId) {
             this.orderId = orderId;
@@ -125,6 +127,10 @@ public class Order {
             this.paymentId = paymentId;
             return this;
         }
+        public Builder setOrderLines(List<OrderLine> orderLines) {
+            this.orderLines = orderLines;
+            return this;
+        }
 
         public Builder copy(Order order) {
             this.orderId = order.orderId;
@@ -134,6 +140,7 @@ public class Order {
             this.customerId = order.customerId;
             this.addressId = order.addressId;
             this.paymentId = order.paymentId;
+            this.orderLines = order.orderLines;
             return this;
         }
         public Order build(){

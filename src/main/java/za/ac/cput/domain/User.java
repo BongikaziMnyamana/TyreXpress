@@ -1,5 +1,6 @@
 package za.ac.cput.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,7 +13,7 @@ public class User {
     private String email;
     @Enumerated(EnumType.STRING)
     private Role role;
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     @OneToOne(mappedBy = "user")
     @JsonIgnore

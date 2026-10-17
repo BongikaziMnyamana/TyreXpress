@@ -15,7 +15,7 @@ public class CustomerController {
         this.service = service;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public Customer create(@RequestBody Customer customer) {
         return service.create(customer);
     }
@@ -38,5 +38,9 @@ public class CustomerController {
     @GetMapping("/getAll")
     public List<Customer> getAll() {
         return service.getAll();
+    }
+    @GetMapping("/by-user/{userId}")
+    public Customer findByUserId(@PathVariable Long userId) {
+        return service.findByUserId(userId);
     }
 }

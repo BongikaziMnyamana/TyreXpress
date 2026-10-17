@@ -57,4 +57,9 @@ public class CustomerService implements ICustomerService{
     public List<Customer> getAll() {
         return repository.findAll();
     }
+
+    @Override
+    public Customer findByUserId(Long userId) {
+        return repository.findByUser_UserId(userId).orElse(null);
+    }
 }

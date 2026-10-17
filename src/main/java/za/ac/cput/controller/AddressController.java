@@ -14,7 +14,7 @@ public class AddressController {
         this.service = service;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public Address create(@RequestBody Address customer) {
         return service.create(customer);
     }

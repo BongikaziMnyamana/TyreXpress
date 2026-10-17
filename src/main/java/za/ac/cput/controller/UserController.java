@@ -16,7 +16,7 @@ public class UserController {
         this.service = service;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public User create(@RequestBody User user) {
         return service.create(user);
     }
@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @DeleteMapping("/delete/{userId}")
-    public boolean delete(@PathVariable Long userId) {
+    public boolean delete(@PathVariable Long userId)     {
         return service.delete(userId);
     }
 

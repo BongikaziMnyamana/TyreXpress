@@ -1,6 +1,7 @@
 package za.ac.cput.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,6 +15,7 @@ public class OrderLine {
     private double lineTotal;
     private String productId;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
@@ -45,8 +47,15 @@ public class OrderLine {
         return lineTotal;
     }
 
-    public String getProductID() {
+    public String getProductId() {
         return productId;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     @Override
