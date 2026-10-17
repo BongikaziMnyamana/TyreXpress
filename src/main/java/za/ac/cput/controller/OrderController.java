@@ -1,5 +1,6 @@
 package za.ac.cput.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Address;
 import za.ac.cput.domain.Order;
@@ -10,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
-
+    @Autowired
     private static OrderController controller = null;
     private IOrderService service;
 

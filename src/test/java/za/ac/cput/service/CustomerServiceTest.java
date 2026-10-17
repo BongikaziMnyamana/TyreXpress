@@ -39,13 +39,12 @@ class CustomerServiceTest {
         );
         user = userRepository.save(user);
 
-        address = AddressFactory.createAddress(
+        address = AddressFactory .createAddress(
                 null,
                 "12 Main Street",
                 "Cape Town",
                 "Western Cape",
-                "7784",
-                null
+                "7784"
         );
 
         address = addressRepository.save(address);

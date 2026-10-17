@@ -10,11 +10,11 @@ class OrderLineFatcoryTest {
     void createOrderLine() {
 
         OrderLine orderLine = OrderLineFatcory.createOrderLine(
-                1L,
+                11L,
                 2,
                 250.00,
                 500.00,
-                "P1"
+                1L
         );
 
         System.out.println(orderLine);

@@ -17,11 +17,10 @@ class OrderFactoryTest {
                 1500.00,
                 LocalDate.now(),
                 OrderStatus.PENDING,
-                "1",
-                "A1",
-                "P1"
+                2L,
+                12L,
+                8L
         );
-
         System.out.println(order);
     }
 }

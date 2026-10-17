@@ -37,7 +37,6 @@ public class OrderLineService implements IOrderLineService{
         }
         return repository.existsById(orderLineId);
     }
-
     @Override
     public List<OrderLine> getAll() {
         return repository.findAll();

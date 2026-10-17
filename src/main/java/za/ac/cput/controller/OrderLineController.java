@@ -1,5 +1,6 @@
 package za.ac.cput.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Order;
 import za.ac.cput.domain.OrderLine;
@@ -12,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/orderLine")
 public class OrderLineController {
-
+@Autowired
     private static OrderLineController controller = null;
     private IOrderLineService service;
 
@@ -26,8 +27,8 @@ public class OrderLineController {
     }
 
     @GetMapping("/read/{id}")
-    public OrderLine read(@PathVariable Long orderlineId) {
-        return service.read(orderlineId);
+    public OrderLine read(@PathVariable Long id) {
+        return service.read(id);
     }
 
     @PutMapping("/update")
@@ -36,8 +37,8 @@ public class OrderLineController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable Long orderLineId) {
-        return service.delete(orderLineId);
+    public boolean delete(@PathVariable Long id) {
+        return service.delete(id);
     }
 
     @GetMapping("/getAll")

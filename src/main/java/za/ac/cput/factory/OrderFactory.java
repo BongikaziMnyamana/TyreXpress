@@ -8,8 +8,8 @@ import java.time.LocalDate;
 
 public class OrderFactory {
     public static Order createOrder(Long orderId, double totalAmount, LocalDate date, OrderStatus status,
-                                    String customerId, String addressId, String paymentId) {
-        if (orderId == null || Helper.isNullOrEmpty(addressId) || Helper.isNullOrEmpty(paymentId)) {
+                                    Long customerId, Long addressId, Long paymentId) {
+        if (orderId == null || addressId == null || paymentId == null) {
             return null;
         }
         if (totalAmount <= 0) {
