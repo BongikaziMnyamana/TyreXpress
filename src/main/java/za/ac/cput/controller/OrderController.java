@@ -1,9 +1,8 @@
 package za.ac.cput.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import za.ac.cput.domain.Address;
 import za.ac.cput.domain.Order;
+import za.ac.cput.domain.OrderStatus;
 import za.ac.cput.service.IOrderService;
 import za.ac.cput.service.OrderService;
 
@@ -11,8 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
-    @Autowired
-    private static OrderController controller = null;
+
     private IOrderService service;
 
     public OrderController(OrderService service) {
@@ -48,6 +46,14 @@ public class OrderController {
     public List<Order> getOrdersByCustomerId(@PathVariable String customerId) {
         return service.getOrdersByCustomerId(customerId);
     }
+
+    @PutMapping("/update-status/{id}")
+    public Order updateOrderStatus(
+            @PathVariable Long id,
+            @RequestParam OrderStatus status) {
+        return service.updateOrderStatus(id, status);
+    }
+
 
 }
 

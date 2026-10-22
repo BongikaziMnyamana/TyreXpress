@@ -95,8 +95,8 @@ public class OrderLine {
             return this;
         }
 
-        public Builder setProductId(String productId) {
-            this.productId = productId;
+        public Builder setProductID(Long productID) {
+            this.productId = productID.toString();
             return this;
         }
         public Builder copy(OrderLine orderLine){
@@ -110,5 +110,6 @@ public class OrderLine {
         public OrderLine build(){
             return new OrderLine(this);
         }
+
     }
 }

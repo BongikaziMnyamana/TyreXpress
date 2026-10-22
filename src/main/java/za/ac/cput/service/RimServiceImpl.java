@@ -31,8 +31,12 @@ public class RimServiceImpl implements IRimService {
     }
 
     @Override
-    public boolean delete(Long aLong) {
-        return rimRepository.existsById(aLong);
+    public boolean delete(Long rimId) {
+        if (rimRepository.existsById(rimId)) {
+            rimRepository.deleteById(rimId);
+            return true;
+        }
+        return false;
     }
 
     @Override

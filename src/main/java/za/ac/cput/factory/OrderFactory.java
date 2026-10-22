@@ -17,7 +17,7 @@ public class OrderFactory {
             return null;
         }
         return new Order.Builder().setOrderId(orderId).setTotalAmount(totalAmount).setDate(date).setStatus(status).
-                setCustomerId(customerId).setAddressId(addressId).setPaymentId(paymentId).build();
+                setCustomerId(String.valueOf(customerId)).setAddressId(String.valueOf(addressId)).setPaymentId(String.valueOf(paymentId)).build();
     }
 
 }

@@ -32,8 +32,12 @@ public class TyreServiceImpl implements ITyreService {
     }
 
     @Override
-    public boolean delete(Long aLong) {
-        return repository.existsById(aLong);
+    public boolean delete(Long tyreId) {
+        if (repository.existsById(tyreId)) {
+            repository.deleteById(tyreId);
+            return true;
+        }
+        return false;
     }
 
     @Override
