@@ -14,6 +14,7 @@ public class Admin {
     public Admin() {
     }
 
+
     public Admin(Builder builder) {
         this.adminId = builder.adminId;
         this.user = builder.user;
