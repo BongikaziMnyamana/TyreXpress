@@ -28,6 +28,13 @@ public class TyreServiceImpl implements ITyreService {
 
     @Override
     public Tyre update(Tyre tyre) {
+        if (tyre.getProductID() == null ||
+                !repository.existsById(tyre.getProductID())) {
+            throw new IllegalArgumentException(
+                    "Tyre not found. Cannot update product."
+            );
+        }
+
         return repository.save(tyre);
     }
 

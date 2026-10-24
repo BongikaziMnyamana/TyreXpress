@@ -11,6 +11,8 @@ public abstract class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long productID;
     protected String name;
+    @Column(name = "image_url")
+    protected String imageUrl;
     protected String brand;
     protected double price;
     protected int stock;
@@ -24,6 +26,7 @@ public abstract class Product {
         this.brand = builder.brand;
         this.price = builder.price;
         this.stock = builder.stock;
+        this.imageUrl = builder.imageUrl;
     }
 
     public Long getProductID() {
@@ -45,12 +48,20 @@ public abstract class Product {
     public int getStock() {
         return stock;
     }
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
     @Override
     public String toString() {
         return "Product{" +
-                "productID='" + productID + '\'' +
+                "productID=" + productID +
                 ", name='" + name + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 ", brand='" + brand + '\'' +
                 ", price=" + price +
                 ", stock=" + stock +
@@ -58,12 +69,12 @@ public abstract class Product {
     }
 
     public static abstract class Builder {
-
         protected Long productID;
         protected String name;
         protected String brand;
         protected double price;
         protected int stock;
+        protected String imageUrl;
 
         public Builder setProductID(Long productID) {
             this.productID = productID;
@@ -80,6 +91,11 @@ public abstract class Product {
             return this;
         }
 
+        public Builder setImageUrl(String imageUrl) {
+            this.imageUrl = imageUrl;
+            return this;
+        }
+
         public Builder setPrice(double price) {
             this.price = price;
             return this;
@@ -90,13 +106,14 @@ public abstract class Product {
             return this;
         }
 
+
         public Builder copy(Product product) {
             this.productID = product.productID;
             this.name = product.name;
             this.brand = product.brand;
             this.price = product.price;
             this.stock = product.stock;
-
+            this.imageUrl = product.imageUrl;
             return this;
         }
     }

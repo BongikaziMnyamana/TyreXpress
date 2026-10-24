@@ -1,6 +1,7 @@
 package za.ac.cput.domain;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,12 +19,15 @@ public class Order {
     private String customerId;
     private String addressId;
     private String paymentId;
-    // Composition → Order contains many OrderLines
+
+    @Column(name = "stock_deducted", nullable = false)
+    private boolean stockDeducted = false;
+
+    // Composition: Order contains many OrderLines
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderLine> orderLines;
 
     public Order() {
-
     }
 
     public Order(Builder builder) {
@@ -34,6 +38,7 @@ public class Order {
         this.customerId = builder.customerId;
         this.addressId = builder.addressId;
         this.paymentId = builder.paymentId;
+        this.stockDeducted = builder.stockDeducted;
         this.orderLines = builder.orderLines;
     }
 
@@ -65,25 +70,29 @@ public class Order {
         return paymentId;
     }
 
+    public void setPaymentId(String paymentId) {
+        this.paymentId = paymentId;
+    }
+
+    public boolean isStockDeducted() {
+        return stockDeducted;
+    }
+
+    public void setStockDeducted(boolean stockDeducted) {
+        this.stockDeducted = stockDeducted;
+    }
+
     public List<OrderLine> getOrderLines() {
         return orderLines;
     }
 
     @Override
     public String toString() {
-        return "Order{" +
-                "orderID='" + orderId + '\'' +
-                ", totalAmount=" + totalAmount +
-                ", date=" + date +
-                ", status=" + status +
-                ", customerID='" + customerId + '\'' +
-                ", addressID='" + addressId + '\'' +
-                ", paymentID='" + paymentId + '\'' +
-                ", orderLines=" + orderLines +
-                '}';
+        return "Order{" + "orderID='" + orderId + '\'' + ", totalAmount=" + totalAmount + ", date=" + date + ", status=" + status + ", customerID='" + customerId + '\'' + ", addressID='" + addressId + '\'' + ", paymentID='" + paymentId + '\'' + ", stockDeducted=" + stockDeducted + ", orderLines=" + orderLines + '}';
     }
 
     public static class Builder {
+
         private Long orderId;
         private double totalAmount;
         private LocalDate date;
@@ -91,6 +100,7 @@ public class Order {
         private String customerId;
         private String addressId;
         private String paymentId;
+        private boolean stockDeducted;
         private List<OrderLine> orderLines;
 
         public Builder setOrderId(Long orderId) {
@@ -127,6 +137,12 @@ public class Order {
             this.paymentId = paymentId;
             return this;
         }
+
+        public Builder setStockDeducted(boolean stockDeducted) {
+            this.stockDeducted = stockDeducted;
+            return this;
+        }
+
         public Builder setOrderLines(List<OrderLine> orderLines) {
             this.orderLines = orderLines;
             return this;
@@ -140,12 +156,13 @@ public class Order {
             this.customerId = order.customerId;
             this.addressId = order.addressId;
             this.paymentId = order.paymentId;
+            this.stockDeducted = order.stockDeducted;
             this.orderLines = order.orderLines;
             return this;
         }
-        public Order build(){
-            return new Order(this);
 
+        public Order build() {
+            return new Order(this);
         }
     }
 }

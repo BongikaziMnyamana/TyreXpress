@@ -100,6 +100,7 @@ public class Tyre extends Product {
             this.brand = tyre.brand;
             this.price = tyre.price;
             this.stock = tyre.stock;
+            this.imageUrl = tyre.imageUrl;
 
             this.size = tyre.size;
             this.season = tyre.season;

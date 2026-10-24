@@ -114,6 +114,8 @@ public class Rim extends Product {
             this.brand = rim.brand;
             this.price = rim.price;
             this.stock = rim.stock;
+            this.imageUrl = rim.imageUrl;
+
             this.diameter = rim.diameter;
             this.width = rim.width;
             this.boltPattern = rim.boltPattern;

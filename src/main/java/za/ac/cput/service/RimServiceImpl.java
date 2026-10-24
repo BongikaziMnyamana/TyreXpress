@@ -27,6 +27,13 @@ public class RimServiceImpl implements IRimService {
 
     @Override
     public Rim update(Rim rim) {
+        if (rim.getProductID() == null ||
+                !rimRepository.existsById(rim.getProductID())) {
+            throw new IllegalArgumentException(
+                    "Rim not found. Cannot update product."
+            );
+        }
+
         return rimRepository.save(rim);
     }
 
