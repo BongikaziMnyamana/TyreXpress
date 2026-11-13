@@ -1,4 +1,3 @@
-
 package za.ac.cput.config;
 
 import org.springframework.context.annotation.Bean;
@@ -22,12 +21,9 @@ import java.util.List;
 public class SecurityConfig {
 
     @Bean
-    public AuthenticationProvider authenticationProvider(
-            CustomUserDetailsService userDetailsService,
-            PasswordEncoder passwordEncoder) {
+    public AuthenticationProvider authenticationProvider(CustomUserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
 
-        DaoAuthenticationProvider provider =
-                new DaoAuthenticationProvider(userDetailsService);
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider(userDetailsService);
 
         provider.setPasswordEncoder(passwordEncoder);
 
@@ -39,17 +35,13 @@ public class SecurityConfig {
 
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.setAllowedOrigins(
-                List.of("http://localhost:4200"));
+        configuration.setAllowedOrigins(List.of("http://localhost:4200"));
 
-        configuration.setAllowedMethods(
-                List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 
-        configuration.setAllowedHeaders(
-                List.of("Authorization", "Content-Type"));
+        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
 
-        UrlBasedCorsConfigurationSource source =
-                new UrlBasedCorsConfigurationSource();
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
         source.registerCorsConfiguration("/**", configuration);
 
@@ -57,28 +49,15 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(
-            HttpSecurity http,
-            AuthenticationProvider authenticationProvider) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, AuthenticationProvider authenticationProvider) throws Exception {
 
-        http
-                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-                .csrf(csrf -> csrf.disable())
-                .authenticationProvider(authenticationProvider)
+        http.cors(cors -> cors.configurationSource(corsConfigurationSource())).csrf(csrf -> csrf.disable()).authenticationProvider(authenticationProvider)
 
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/users/create",
-                                "/users/login",
-                                "/addresses/create",
-                                "/customers/create",
-                                "/tyres/getAll",
-                                "/tyres/read/**",
-                                "/rims/getAll",
-                                "/rims/read/**"
-                        ).permitAll()
-                        .anyRequest().authenticated())
-                .httpBasic(Customizer.withDefaults());
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/users/create", "/users/login", "/addresses/create", "/customers/create", "/tyres/getAll", "/tyres/read/**", "/rims/getAll", "/rims/read/**").permitAll()
+
+                        .requestMatchers("/tyres/create", "/tyres/update", "/tyres/delete/**", "/rims/create", "/rims/update", "/rims/delete/**", "/admins/**").hasRole("ADMIN")
+
+                        .anyRequest().authenticated()).httpBasic(Customizer.withDefaults());
 
         return http.build();
 
