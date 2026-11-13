@@ -54,7 +54,6 @@ public class User {
                 "userId=" + userId +
                 ", email='" + email + '\'' +
                 ", role=" + role +
-                ", password='" + password + '\'' +
                 '}';
     }
 
